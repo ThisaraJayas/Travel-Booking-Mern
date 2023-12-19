@@ -7,6 +7,7 @@ import worldImg from '../assets/images/world.png'
 import Subtitle from '../shared/Subtitle'
 import SearchBar from '../shared/SearchBar'
 import ServiceList from '../services/ServicesList'
+import FeaturedTourList from '../components/Featured-tours/FeaturedTourList'
 
 
 export default function Home(){
@@ -51,7 +52,7 @@ export default function Home(){
                 </Row>
             </Container>
         </section>
-        {/* // section part==================================== */}
+        {/* ================== what we serve section part=========================== */}
         <section>
             <Container>
                 <Row>
@@ -60,6 +61,18 @@ export default function Home(){
                         <h2 className='services__title'>We offer our best services</h2>
                     </Col>
                     <ServiceList/>
+                </Row>
+            </Container>
+        </section>
+        {/* =============================featured tour section=========================== */}
+        <section>
+            <Container>
+                <Row>
+                    <Col lg='12' className='mb-5'>
+                        <Subtitle subtitle={'Explore'}/>
+                        <h2 className='featured__tour-title'>Our featured tours</h2>
+                    </Col>
+                    <FeaturedTourList/>
                 </Row>
             </Container>
         </section>

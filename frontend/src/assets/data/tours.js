@@ -27,8 +27,8 @@ const tours = [
   },
   {
     id: "02",
-    title: "Bali, Indonesia",
-    city: "Indonesia",
+    title: "Colombo, Sri Lanka",
+    city: "Sri Lanka",
     distance: 400,
     price: 99,
     maxGroupSize: 8,
@@ -128,6 +128,14 @@ const tours = [
         name: "jhon doe",
         rating: 4.6,
       },
+      {
+        name: "jhon doe",
+        rating: 3.6,
+      },
+      {
+        name: "jhon doe",
+        rating: 4.6,
+      },
     ],
     avgRating: 4.5,
     photo: tourImg07,
@@ -142,10 +150,7 @@ const tours = [
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
+      
     ],
     avgRating: 4.5,
     photo: tourImg03,
