@@ -10,6 +10,8 @@ import ServiceList from '../services/ServicesList'
 import FeaturedTourList from '../components/Featured-tours/FeaturedTourList'
 import experenceImg from '../assets/images/experience.png'
 import MasonryImagesGallery from '../components/image-gallery/MasonyImageGallery'
+import Testimonials from '../components/Testimonial/Testimonial'
+import NewsLetter from '../shared/Newsletter'
 
 
 export default function Home(){
@@ -137,9 +139,14 @@ export default function Home(){
                         <Subtitle subtitle={'Fans Love'} />
                         <h2 className='testimonial__title'>What our fans say about us</h2>
                     </Col>
+                    <Col lg='12'>
+                        <Testimonials/>
+                    </Col>
                 </Row>
             </Container>
         </section>
+        {/* =============================Newsletter section=========================== */}
+        <NewsLetter/>
         </>
     )
 }
