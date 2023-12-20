@@ -8,6 +8,7 @@ import Subtitle from '../shared/Subtitle'
 import SearchBar from '../shared/SearchBar'
 import ServiceList from '../services/ServicesList'
 import FeaturedTourList from '../components/Featured-tours/FeaturedTourList'
+import experenceImg from '../assets/images/experience.png'
 
 
 export default function Home(){
@@ -73,6 +74,54 @@ export default function Home(){
                         <h2 className='featured__tour-title'>Our featured tours</h2>
                     </Col>
                     <FeaturedTourList/>
+                </Row>
+            </Container>
+        </section>
+        {/* =============================experience section=========================== */}
+        <section>
+            <Container>
+                <Row>
+                    <Col lg='6'>
+                        <div className='experence_content'>
+                            <Subtitle subtitle={'Experience'}/>
+                            <h2>With our all experence <br/> we will serve you</h2>
+                            <p>
+                                Lorem isfj kolso isne dusm, jupaske elite quaes.
+                                <br/>
+                                Ques alies. fis btsum dkiu undesb jdopsa
+                            </p>
+                        </div>
+                        <div className='counter__wrapper d-flex align-items-center gap-5'>
+                            <div className='counter__box'>
+                                <span>12k</span>
+                                <h6>Successfull Trip</h6>
+                            </div>
+                            <div className='counter__box'>
+                                <span>2k</span>
+                                <h6>Regular Clients</h6>
+                            </div>
+                            <div className='counter__box'>
+                                <span>15</span>
+                                <h6>Years experence</h6>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col lg='6'>
+                        <div className='experence__img'>
+                            <img src={experenceImg} alt=''/>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </section>
+        {/* =============================Gallery section=========================== */}
+        <section>
+            <Container>
+                <Row>
+                    <Col lg='12'>
+                        <Subtitle subtitle={'Gallery'} />
+                        <h2 className='gallery__title'>Visit our customers tour gallery</h2>
+                    </Col>
                 </Row>
             </Container>
         </section>

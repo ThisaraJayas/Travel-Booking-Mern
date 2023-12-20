@@ -3,17 +3,16 @@ import { Link } from 'react-router-dom'
 import { FiMapPin } from "react-icons/fi";
 import { IoStar } from "react-icons/io5";
 import './Tour-card.css'
+import calculateAvgRating from "../utils/avgRating";
 
 export default function TourCard({ tour }) {
 
     const { id, city, title, photo, price, featured, reviews } = tour
 
+    const {totalRating, avgRating} = calculateAvgRating(reviews)//
+
     //calculate rating======================================
-
-    const totalRating = reviews?.reduce((acc, item) => acc + item.rating, 0)
-    const avgRating = totalRating == 0 ? '' : totalRating == 1 ? totalRating :
-        totalRating / reviews?.length
-
+            //in avgRating.js file
     //calculate rating======================================    
 
     return (
