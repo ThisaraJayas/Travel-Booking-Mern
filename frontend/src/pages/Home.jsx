@@ -9,6 +9,7 @@ import SearchBar from '../shared/SearchBar'
 import ServiceList from '../services/ServicesList'
 import FeaturedTourList from '../components/Featured-tours/FeaturedTourList'
 import experenceImg from '../assets/images/experience.png'
+import MasonryImagesGallery from '../components/image-gallery/MasonyImageGallery'
 
 
 export default function Home(){
@@ -121,6 +122,20 @@ export default function Home(){
                     <Col lg='12'>
                         <Subtitle subtitle={'Gallery'} />
                         <h2 className='gallery__title'>Visit our customers tour gallery</h2>
+                    </Col>
+                    <Col lg='12'>
+                        <MasonryImagesGallery/>
+                    </Col>
+                </Row>
+            </Container>
+        </section>
+        {/* =============================Testimonial section=========================== */}
+        <section>
+            <Container>
+                <Row>
+                    <Col lg='12'>
+                        <Subtitle subtitle={'Fans Love'} />
+                        <h2 className='testimonial__title'>What our fans say about us</h2>
                     </Col>
                 </Row>
             </Container>
