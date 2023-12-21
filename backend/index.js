@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv').config()
-const tourRoute = require('./routes/tours.js')
+
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -20,8 +20,14 @@ mongoose.connect(URL, {})
     connection.once("open", () => {
         console.log('connection success!');
 })
-
+const tourRoute = require('./routes/tours.js')
 app.use("/tours", tourRoute)
+
+const userRoute = require('./routes/users.js')
+app.use("/users", userRoute)
+
+const authRoute = require('./routes/auth.js')
+app.use('/users',authRoute)
 
 app.listen(port, () => {
     console.log('server listening on port', port);
