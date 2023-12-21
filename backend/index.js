@@ -33,6 +33,9 @@ app.use("/api/v1/users", userRoute)
 const authRoute = require('./routes/auth.js')
 app.use('/api/v1/auth',authRoute)
 
+const reviewRoute = require('./routes/reviews.js')
+app.use('/api/v1/review',reviewRoute)
+
 app.listen(port, () => {
     console.log('server listening on port', port);
 })
