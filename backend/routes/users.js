@@ -1,20 +1,21 @@
 const express = require('express');
 const { createUser, updateUser, deleteUser, getSingleUser, getAllUser } = require('../controllers/userController');
 const router = express.Router();
+const {verifyUser, verifyAdmin} = require('../utils/verifyToken.js')
 
 //create new user
 router.post('/',createUser)
 
 //update new user
-router.put('/:id',updateUser)
+router.put('/:id', verifyUser,updateUser)
 
 //delete new user
-router.delete('/:id',deleteUser)
+router.delete('/:id', verifyUser,deleteUser)
 
 //get single user
-router.get('/:id',getSingleUser)
+router.get('/:id', verifyUser,getSingleUser)
 
 //get all user
-router.get('/',getAllUser)
+router.get('/', verifyAdmin,getAllUser)
 
 module.exports=router
