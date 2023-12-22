@@ -36,6 +36,9 @@ app.use('/api/v1/auth',authRoute)
 const reviewRoute = require('./routes/reviews.js')
 app.use('/api/v1/review',reviewRoute)
 
+const bookingRoute = require('./routes/bookings.js')
+app.use('/api/v1/booking',bookingRoute)
+
 app.listen(port, () => {
     console.log('server listening on port', port);
 })
