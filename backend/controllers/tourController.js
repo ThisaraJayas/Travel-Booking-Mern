@@ -87,9 +87,13 @@ const getAllTour = async (req, res) => {
 //get tour by search=====================================
 
 const getTourBySearch = async (req, res) => {
-    const city = new RegExp(req.city, 'i')  //here 'i' means case sensitive
+    const city = new RegExp(req.query.city, 'i')  //here 'i' means case sensitive
     const distance = parseInt(req.query.distance)
     const maxGroupSize = parseInt(req.query.maxGroupSize)
+
+    console.log('City:', city);
+    console.log('Distance:', distance);
+    console.log('Max Group Size:', maxGroupSize);
 
     try {
         //gte means greater than equal

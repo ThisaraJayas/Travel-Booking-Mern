@@ -5,6 +5,7 @@ const router = express.Router();
 const { createTour, updateTour, deleteTour, getSingleTour, getAllTour, getTourBySearch, getFeaturedTour, getTourCount } = require('../controllers/tourController');
 const {verifyUser, verifyAdmin} = require('../utils/verifyToken.js')
 
+
 //create new tour
 router.post('/',verifyAdmin,createTour)
 
@@ -24,10 +25,10 @@ router.get('/',getAllTour)
 router.get('/search/getTourBySearch', getTourBySearch)
 
 //get featured tour
-router.get('/search/getFeaturedTour', getFeaturedTour)
+router.get('/search', getTourBySearch);
+router.get('/search/getFeaturedTours', getFeaturedTour);
 
 //tour count
 router.get('/search/getTourCount', getTourCount)
-
 
 module.exports=router

@@ -4,10 +4,11 @@ import { FiMapPin } from "react-icons/fi";
 import { IoStar } from "react-icons/io5";
 import './Tour-card.css'
 import calculateAvgRating from "../utils/avgRating";
+// import image from '../assets/images/tour-img01.jpg'
 
 export default function TourCard({ tour }) {
 
-    const { id, city, title, photo, price, featured, reviews } = tour
+    const { _id, city, title, photo, price, featured, reviews } = tour
 
     const {totalRating, avgRating} = calculateAvgRating(reviews)//
 
@@ -19,7 +20,7 @@ export default function TourCard({ tour }) {
         <div className="tour__card">
             <Card>
                 <div className="tour__img">
-                    <img src={photo} alt="tour-img" />
+                <img src={photo} alt="tour-img" />
                     {featured && <span>Featured</span>}
                 </div>
                 <CardBody>
@@ -37,18 +38,17 @@ export default function TourCard({ tour }) {
                         </span>
                     </div>
                     <h5 className="tour__title">
-                        <Link to={`/tours/${id}`}>{title}</Link>
+                        <Link to={`/tours/${_id}`}>{title}</Link>
                         </h5>
                     <div className="card__bottom d-flex align-items-center
                 justify-content-between mt-3">
                         <h5>${price} <span> /per person</span></h5>
                         <button className="btn booking__btn">
-                            <Link to={`/tours/${id}`}>Book Now</Link>
+                            <Link to={`/tours/${_id}`}>Book Now</Link>
                         </button>
                     </div>
                 </CardBody>
             </Card>
-
         </div>
     )
 }

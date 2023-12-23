@@ -14,6 +14,7 @@ import { RiMapPinTimeLine } from "react-icons/ri";
 import { useState, useRef } from 'react'
 import Booking from '../components/Booking/Booking'
 import NewsLetter from '../shared/Newsletter'
+import image from '../assets/images/tour-img01.jpg'
 
 export default function TourDetails() {
 
@@ -47,7 +48,7 @@ export default function TourDetails() {
                     <Row>
                         <Col lg='8'>
                             <div className='tour__content'>
-                                <img src={photo} alt='' />
+                                <img src={image} alt='' />
                                 <div className='tour__info'>
                                     <h2>{title}</h2>
 
