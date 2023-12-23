@@ -11,19 +11,28 @@ import { RiGroupLine } from "react-icons/ri";
 import { MdOutlineStar } from "react-icons/md";
 import avatar from '../assets/images/avatar.jpg'
 import { RiMapPinTimeLine } from "react-icons/ri";
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Booking from '../components/Booking/Booking'
 import NewsLetter from '../shared/Newsletter'
 import image from '../assets/images/tour-img01.jpg'
+import { BASE_URL } from "../utils/config"
+import useFetch from '../hooks/userFetch'
+
+//for review.....................................
+import { useContext } from 'react'
+import AuthContext from './../context/AuthContext'
+
 
 export default function TourDetails() {
 
     const { id } = useParams()
     const reviewMsgRef = useRef('')
     const [tourRating, setTourRating] =useState(null)
+    ////////for review part/////////////////////////////////////
+    const {user} = useContext(AuthContext)
 
 
-    const tour = tourData.find(tour => tour.id == id)
+    const {data:tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`)
     //destructure data from tour object
     const { photo, title, desc, price, address, reviews, city, distance, maxGroupSize } = tour
 
@@ -33,22 +42,62 @@ export default function TourDetails() {
     const options = {day:'numeric', month:'long', year: 'numeric'}
 
     //submit request to the server
-    const submitHandler = e=>{
+    const submitHandler = async e=>{
         e.preventDefault()
         const reviewText = reviewMsgRef.current.value
 
-        alert(`${reviewText}, ${tourRating}`)
+        /////////review part////////////////////////////////////////////
+        
+        }
+
+        try{
+            if(!user || user===undefined || user===null){
+                alert('please sign in')
+            }
+
+            const reviewObj = {
+                username: user?.username,
+                reviewText,
+                rating: tourRating
+            }
+            const res = await fetch(`${BASE_URL}/review/${id}`,{
+                method:'post',
+                headers:{
+                    'content-type':'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify(reviewObj)
+            })
+            const result = await res.json()
+            if(!res.ok){
+                return  alert(result.message)
+            }
+            alert(result.message)
+        }catch(err){
+            alert(err.message)
+        }
 
     }
+ ///////////////////////////////////////////review part  end////////////////////////////////////////////
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[tour])
 
     return (
         <>
             <section>
                 <Container>
-                    <Row>
+                    {
+                        loading && <h4 className='text-center pt-5'>Loading..........</h4>
+                    }
+                    {
+                       error && <h4 className='text-center pt-5'>{error}</h4>
+                    }
+                    {
+                        !loading && !error && <Row>
                         <Col lg='8'>
                             <div className='tour__content'>
-                                <img src={image} alt='' />
+                                <img src={photo} alt='' />
                                 <div className='tour__info'>
                                     <h2>{title}</h2>
 
@@ -112,16 +161,17 @@ export default function TourDetails() {
                                                         <div className='d-flex align-items-center 
                                                         justify-content-between'>
                                                             <div>
-                                                                <h5>Thisara</h5>
-                                                                <p>{new Date('01-18-2023')
+//------------------------ review part---------------------------------------------------------------------------------------------
+                                                                <h5>{review.username}</h5>
+                                                                <p>{new Date(review.createdAt)
                                                                 .toLocaleDateString('en-US', options
                                                                 )}</p>
                                                             </div>
                                                             <span className='d-flex align-items-center'>
-                                                                5 <i><MdOutlineStar /></i>
+                                                                {review.rating} <i><MdOutlineStar /></i>
                                                             </span>
                                                         </div>
-                                                        <h6>Amazing tour</h6>
+                                                        <h6>{review.reviewText}</h6>
                                                     </div>
                                                 </div>
                                             ))
@@ -134,6 +184,7 @@ export default function TourDetails() {
                             <Booking tour={tour} avgRating={avgRating}/>
                         </Col>
                     </Row>
+                    }
                 </Container>
             </section>
             <NewsLetter/>
