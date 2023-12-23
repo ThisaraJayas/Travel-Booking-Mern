@@ -161,7 +161,7 @@ export default function TourDetails() {
                                                         <div className='d-flex align-items-center 
                                                         justify-content-between'>
                                                             <div>
-//------------------------ review part---------------------------------------------------------------------------------------------
+//------------------------ review part-----------------------------------------------------------------------------------------------
                                                                 <h5>{review.username}</h5>
                                                                 <p>{new Date(review.createdAt)
                                                                 .toLocaleDateString('en-US', options
